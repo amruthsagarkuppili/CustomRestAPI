@@ -1,0 +1,52 @@
+
+
+<!--###################################### -->
+<!--#                                    #-->
+<!--# @author Amruth Sagar Kuppili       #-->
+<!--#                                    #-->
+<!--######################################-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Title</title>
+
+
+</head>
+<body>
+{% if result["message"] == "ping" %}
+<pre>Response body(JSON):</pre>
+<pre>&nbsp;&nbsp;{</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;"success" : true</pre>
+<pre>&nbsp;&nbsp;}</pre>
+<pre>Response Status Code : 200</pre>
+{% endif %}
+{% if result["message"] == "posts" %}
+    {% if result["error"] is defined %}
+        <pre>Response body(JSON):</pre>
+        <pre>&nbsp;&nbsp;{</pre>
+        <pre>&nbsp;&nbsp;&nbsp;&nbsp;"error" : {{result["error"]}}</pre>
+        <pre>&nbsp;&nbsp;}</pre>
+        <pre>Response Status Code : {{result["statuscode"]}}</pre>
+
+    {% else %}
+        <pre>Response body(JSON):</pre>
+        <pre>&nbsp;&nbsp;{</pre>
+        <pre>&nbsp;&nbsp;&nbsp;&nbsp;"posts": {{response}}</pre>
+        <pre>&nbsp;&nbsp;}</pre>
+        <pre>Response Status Code : {{result["statuscode"]}}</pre>
+
+
+    {% endif %}
+
+{% endif %}
+
+</body>
+</html>
+
+
+
